@@ -13,6 +13,7 @@ or browse the published version.
 |---|---|
 | `index.html` | Home — 3-slide hero, equipment tabs, journal, reviews |
 | `products.html` / `product.html` | Catalogue grid and single-equipment page (`?model=<key>`) |
+| `checkout.html` | Details, delivery, order summary, confirmation |
 | cart | Slide-in drawer on every page, persisted in `localStorage` |
 | `short-term.html` / `long-term.html` | Rental plan tiers |
 | `services.html` `about.html` `news.html` `contact.html` | |
@@ -33,10 +34,18 @@ Half the catalogue is **rented monthly** (`unit: 'month'`) and half is **sold
 outright**, so the drawer keeps two separate totals and never adds them
 together. Adding a rental carries the selected term onto the cart line.
 
-**There is no payment gateway yet.** The Checkout button is a placeholder
-pointing at the contact form. When the gateway lands, that `href` in
-`cart_drawer()` is the single place to change, and the two totals the drawer
-already computes are what it should be handed.
+Checkout (`checkout.html`) has three states, all driven by the same cart:
+an empty-cart notice, the form with a sticky order summary, and a confirmation
+carrying an order reference.
+
+**There is no payment gateway yet.** The payment step is a labelled placeholder
+that says so on the page, and placing an order records it rather than charging
+anything — which is also how B2B rental usually runs: confirm, then invoice.
+When the gateway lands, replace the `.paystub` block in `build_checkout()` and
+hand it the two totals the summary already computes. Nothing else needs to move.
+
+Form validation is deliberately `novalidate` plus a manual pass, so every bad
+field is reported at once rather than the browser stopping at the first.
 
 The cart button sits in the header at every width; on phones the drawer goes
 full width.

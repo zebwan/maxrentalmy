@@ -243,8 +243,7 @@ def cart_drawer():
         <p class="cart__note">
           Rental prices are per desk, per month. Delivery and installation included.
         </p>
-        <!-- Placeholder target: point this at the payment gateway once it exists. -->
-        <a class="pill cart__cta" href="contact.html">Checkout</a>
+        <a class="pill cart__cta" href="checkout.html">Checkout</a>
         <button class="cart__clear" type="button" data-clear-cart>Clear cart</button>
       </footer>
     </aside>
@@ -1036,6 +1035,228 @@ def build_product():
     return page(meta, body, "products.html")
 
 
+
+# Malaysia's 13 states and 3 federal territories, for the delivery address.
+STATES = [
+    "Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang",
+    "Perak", "Perlis", "Pulau Pinang", "Sabah", "Sarawak", "Selangor",
+    "Terengganu", "W.P. Kuala Lumpur", "W.P. Labuan", "W.P. Putrajaya",
+]
+
+
+def build_checkout():
+    """Checkout.
+
+    Collects the details MMX need to deliver and invoice. There is no payment
+    gateway yet, so the payment step is a labelled placeholder and submitting
+    records the order rather than taking money — which is also how B2B rental
+    tends to work: confirm, then invoice. When the gateway lands, replace the
+    .paystub block and post the two totals the summary already computes.
+    """
+    meta = {
+        "title": "Checkout — MAXRENTAL",
+        "description": "Confirm your MAXRENTAL order: delivery details, rental term and totals.",
+    }
+    states = "\n".join('              <option>%s</option>' % e(x) for x in STATES)
+
+    body = """
+    <section class="section--tight container">
+      <p class="t-meta"><a href="products.html">&larr; Continue shopping</a></p>
+
+      <div data-checkout-empty hidden>
+        <h1 style="margin-top:18px">Your cart is empty</h1>
+        <p class="t-lead grey" style="margin-top:14px;max-width:44ch">
+          Add the machines you need and they will show up here.
+        </p>
+        <p style="margin-top:26px"><a class="pill" href="products.html">Browse equipment</a></p>
+      </div>
+
+      <div data-checkout-done hidden class="done">
+        <h1>Order received</h1>
+        <p class="t-lead grey" style="margin-top:14px">
+          Thank you. We will confirm availability and send an invoice within one
+          working day. Nothing has been charged.
+        </p>
+        <p class="done__ref">Reference <strong data-order-ref></strong></p>
+        <p class="t-body grey" style="margin-top:22px">
+          Questions in the meantime? WhatsApp {support} or email
+          <a href="mailto:{email}">{email}</a>.
+        </p>
+        <p style="margin-top:26px"><a class="pill" href="index.html">Back to the site</a></p>
+      </div>
+
+      <div data-checkout-main hidden>
+        <h1 style="margin-top:18px">Checkout</h1>
+
+        <div class="checkout">
+          <form data-checkout-form novalidate>
+            <fieldset class="fieldset">
+              <div class="fieldset__head"><h2>Your details</h2><span class="fieldset__step">Step 1 of 3</span></div>
+              <label class="field"><span>Full name</span>
+                <input type="text" name="name" autocomplete="name" required /></label>
+              <div class="field__row">
+                <label class="field"><span>Work email</span>
+                  <input type="email" name="email" autocomplete="email" required /></label>
+                <label class="field"><span>Phone</span>
+                  <input type="tel" name="phone" autocomplete="tel" required /></label>
+              </div>
+              <div class="field__row">
+                <label class="field"><span>Company</span>
+                  <input type="text" name="company" autocomplete="organization" required /></label>
+                <label class="field"><span>Company registration no. <span class="grey">(optional)</span></span>
+                  <input type="text" name="ssm" /></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="fieldset">
+              <div class="fieldset__head"><h2>Delivery</h2><span class="fieldset__step">Step 2 of 3</span></div>
+              <label class="field"><span>Address</span>
+                <input type="text" name="addr1" autocomplete="address-line1" required /></label>
+              <label class="field"><span>Address line 2 <span class="grey">(optional)</span></span>
+                <input type="text" name="addr2" autocomplete="address-line2" /></label>
+              <div class="field__row">
+                <label class="field"><span>Postcode</span>
+                  <input type="text" name="post" inputmode="numeric" autocomplete="postal-code"
+                         pattern="[0-9]{{5}}" required /></label>
+                <label class="field"><span>City</span>
+                  <input type="text" name="city" autocomplete="address-level2" required /></label>
+              </div>
+              <label class="field"><span>State</span>
+                <select name="state" required>
+                  <option value="">Select a state</option>
+{states}
+                </select></label>
+              <label class="field"><span>Delivery notes <span class="grey">(optional)</span></span>
+                <textarea name="notes" rows="3" placeholder="Floor, unit, who to ask for"></textarea></label>
+            </fieldset>
+
+            <fieldset class="fieldset">
+              <div class="fieldset__head"><h2>Payment</h2><span class="fieldset__step">Step 3 of 3</span></div>
+              <div class="paystub">
+                <p><strong>Card payment is not live on this site yet.</strong></p>
+                <p>Place the order and we will confirm availability, then send an
+                   invoice with payment instructions. Nothing is charged here.</p>
+              </div>
+            </fieldset>
+
+            <button class="pill checkout__submit" type="submit">Place order</button>
+            <p class="checkout__err" data-checkout-err hidden></p>
+          </form>
+
+          <aside class="checkout__summary">
+            <h2>Order summary</h2>
+            <div data-checkout-lines></div>
+            <div class="sumtotal" data-co-rent hidden>
+              <span>Monthly rental</span><strong data-co-rent-v>RM0</strong>
+            </div>
+            <div class="sumtotal" data-co-buy hidden>
+              <span>One-off purchase</span><strong data-co-buy-v>RM0</strong>
+            </div>
+            <p class="sumnote">
+              Delivery and installation in the Klang Valley are included.
+              Rental prices are per unit, per month.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {{
+        var CART_KEY = 'MR2_CART';
+        var wrapEmpty = document.querySelector('[data-checkout-empty]');
+        var wrapMain = document.querySelector('[data-checkout-main]');
+        var wrapDone = document.querySelector('[data-checkout-done]');
+        var form = document.querySelector('[data-checkout-form]');
+
+        function read() {{
+          try {{ return JSON.parse(localStorage.getItem(CART_KEY)) || []; }}
+          catch (e) {{ return []; }}
+        }}
+        function money(n) {{
+          return 'RM' + n.toLocaleString('en-MY', {{ maximumFractionDigits: 0 }});
+        }}
+        function byKey(k) {{
+          return (window.PRODUCTS || []).filter(function (p) {{ return p.key === k; }})[0];
+        }}
+        function niceName(t) {{
+          var keep = /^(ssd|ram|hdd|sff|hp|pc|i3|i5|i7|gb|tb)$/i;
+          return String(t).toLowerCase().split(' ').map(function (w) {{
+            return keep.test(w) ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1);
+          }}).join(' ');
+        }}
+
+        var items = read();
+        if (!items.length) {{ wrapEmpty.hidden = false; return; }}
+        wrapMain.hidden = false;
+
+        var plan = window.MR_PLAN_IMAGE || {{}};
+        var rent = 0, buy = 0;
+        document.querySelector('[data-checkout-lines]').innerHTML = items.map(function (it) {{
+          var p = byKey(it.k);
+          var line = (p && typeof p.value === 'number' ? p.value : 0) * it.q;
+          var isRental = p && p.unit === 'month';
+          if (isRental) {{ rent += line; }} else {{ buy += line; }}
+          return '<div class="sumline">' +
+            '<span class="sumline__media"><img src="img/tiles/' + (plan[it.k] || it.k) + '-1.webp" alt="" /></span>' +
+            '<span><span class="sumline__name">' + (p ? niceName(p.name) : it.k) + '</span>' +
+            '<span class="sumline__meta">' + it.q + ' &times; ' +
+              (isRental ? (it.t || 'monthly') : 'one-off') + '</span></span>' +
+            '<span class="sumline__price">' + money(line) + (isRental ? ' /mo' : '') + '</span>' +
+          '</div>';
+        }}).join('');
+
+        [['[data-co-rent]', '[data-co-rent-v]', rent, ' / month'],
+         ['[data-co-buy]', '[data-co-buy-v]', buy, '']].forEach(function (r) {{
+          var w = document.querySelector(r[0]);
+          w.hidden = r[2] === 0;
+          document.querySelector(r[1]).textContent = money(r[2]) + r[3];
+        }});
+
+        form.addEventListener('submit', function (ev) {{
+          ev.preventDefault();
+          var err = document.querySelector('[data-checkout-err]');
+
+          /* novalidate is set so the browser does not stop on the first field;
+             this reports them all and focuses the first. */
+          var bad = [].slice.call(form.elements).filter(function (el) {{
+            return el.willValidate && !el.checkValidity();
+          }});
+          if (bad.length) {{
+            err.hidden = false;
+            err.textContent = bad.length === 1
+              ? 'One field still needs attention.'
+              : bad.length + ' fields still need attention.';
+            bad.forEach(function (el) {{ el.reportValidity && el.setAttribute('aria-invalid', 'true'); }});
+            bad[0].focus();
+            return;
+          }}
+          err.hidden = true;
+
+          /* No gateway yet: record the order and confirm. Swap this block for
+             the gateway's session hand-off when it exists, passing the rent
+             and buy totals computed above. */
+          var d = new Date();
+          var ref = 'MR-' + d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') +
+                    String(d.getDate()).padStart(2, '0') + '-' +
+                    String(Math.floor(Math.random() * 9000) + 1000);
+          document.querySelector('[data-order-ref]').textContent = ref;
+
+          try {{ localStorage.removeItem(CART_KEY); }} catch (e) {{}}
+          document.querySelectorAll('[data-cart-count]').forEach(function (el) {{
+            el.textContent = '0'; el.hidden = true;
+          }});
+
+          wrapMain.hidden = true;
+          wrapDone.hidden = false;
+          window.scrollTo(0, 0);
+        }});
+      }});
+    </script>
+""".format(states=states, support=e(C.COMPANY["support"]), email=e(C.COMPANY["email"]))
+    return page(meta, body)
+
+
 PAGES = {
     "index.html": build_home,
     "products.html": build_products,
@@ -1046,6 +1267,7 @@ PAGES = {
     "about.html": build_about,
     "news.html": build_news,
     "contact.html": build_contact,
+    "checkout.html": build_checkout,
     "terms.html": lambda: build_legal("terms"),
     "privacy.html": lambda: build_legal("privacy"),
 }

@@ -965,3 +965,128 @@ body.has-drawer { overflow: hidden; }
 @media (max-width: 860px) {
     .cart__panel { width: 100%; }
 }
+
+/* ---------------------------------------------------------------- forms --- */
+
+.field { display: block; margin-bottom: 18px; }
+.field > span { display: block; font-size: 12px; color: var(--ink-4); }
+.field input, .field select, .field textarea {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 11px 0;
+    font: inherit;
+    color: var(--ink);
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    background: none;
+    border-radius: 0;
+    transition: border-color 160ms ease;
+}
+.field textarea { resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-bottom-color: var(--accent-deep);
+}
+.field input:user-invalid, .field select:user-invalid {
+    border-bottom-color: var(--sale);
+}
+.field__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+
+.fieldset { border: 0; padding: 0; margin: 0 0 34px; }
+.fieldset__head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+}
+.fieldset__head h2 { font-size: 16px; letter-spacing: -0.03em; }
+.fieldset__step {
+    font-size: 12px;
+    color: var(--ink-4);
+}
+
+/* ------------------------------------------------------------- checkout --- */
+
+.checkout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr);
+    gap: clamp(30px, 4vw, 64px);
+    align-items: start;
+    margin-top: 32px;
+}
+.checkout__summary {
+    position: sticky;
+    top: 92px;
+    background: var(--surface);
+    border-radius: var(--r-media);
+    padding: 22px;
+}
+.checkout__summary h2 { font-size: 16px; letter-spacing: -0.03em; margin-bottom: 4px; }
+
+.sumline {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+}
+.sumline__media {
+    background: var(--page);
+    border-radius: var(--r-tile);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+.sumline__media img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+.sumline > span:nth-child(2) { min-width: 0; }
+.sumline__name { display: block; font-size: 13px; letter-spacing: -0.2px; }
+.sumline__meta { display: block; font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+.sumline__price { font-size: 13px; white-space: nowrap; }
+
+.sumtotal { display: flex; justify-content: space-between; align-items: baseline; padding-top: 14px; }
+.sumtotal + .sumtotal { padding-top: 8px; }
+.sumtotal strong { font-size: 18px; letter-spacing: -0.03em; }
+.sumnote { margin-top: 14px; font-size: 12px; color: var(--ink-3); }
+
+/* No gateway yet — this panel stands in its place and says so. */
+.paystub {
+    border: 1px dashed var(--rule-2);
+    border-radius: var(--r-media);
+    padding: 18px;
+    background: var(--accent-wash);
+}
+.paystub p { font-size: 13px; color: var(--ink-2); }
+.paystub p + p { margin-top: 8px; }
+
+.checkout__submit { width: 100%; justify-content: center; margin-top: 8px; }
+.checkout__err {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--sale);
+}
+
+.done {
+    max-width: 54ch;
+    padding-block: clamp(30px, 5vw, 64px);
+}
+.done__ref {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 16px;
+    border-radius: var(--r-tile);
+    background: var(--surface);
+    font-size: 15px;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 860px) {
+    .checkout { grid-template-columns: 1fr; }
+    /* summary first on a phone, so the totals are seen before the form */
+    .checkout__summary { position: static; order: -1; }
+    .field__row { grid-template-columns: 1fr; }
+}
