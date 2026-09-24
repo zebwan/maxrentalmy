@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>MAXRENTAL — Office IT rental in Malaysia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="Desktops and laptops for Malaysian offices from RM50 a month. Delivery, installation, warranty, insurance and support included. MMX Solutions Sdn Bhd, Kepong, since 2006." />
+<meta name="theme-color" content="#ffffff" />
+<meta property="og:title" content="MAXRENTAL — Office IT rental in Malaysia" />
+<meta property="og:description" content="Desktops and laptops for Malaysian offices from RM50 a month. Delivery, installation, warranty, insurance and support included. MMX Solutions Sdn Bhd, Kepong, since 2006." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="css/app.css?v=1790237347" />
+<link rel="icon" href="img/mark-512.png" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <nav class="nav">
+        <a href="products.html">Equipment</a>
+        <a href="short-term.html">Rental plans</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="news.html">Journal</a>
+      </nav>
+      <button class="nav-toggle" type="button" aria-expanded="false">Menu</button>
+      <a class="brand" href="index.html" aria-label="MAXRENTAL home">
+        <img src="img/logo-ink.png" alt="MAXRENTAL" width="176" height="37" />
+      </a>
+      <div class="header__end">
+        <a href="contact.html">Contact</a>
+        <a href="products.html">Quote <span data-quote-count></span></a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero" data-hero>
+
+      <div class="hero__slide is-active" data-slide="0" aria-hidden="false">
+        <video autoplay loop muted playsinline preload="auto" poster="video/hero-poster.jpg" data-wide="video/hero-product.mp4" data-wide-poster="video/hero-poster.jpg" data-tall="video/hero-product-tall.mp4" data-tall-poster="video/hero-poster-tall.jpg"></video>
+        <div class="hero__scrim"></div>
+        <div class="container hero__inner">
+          <p class="hero__eyebrow">Office IT, rented</p>
+          <h1>Equip the whole office for RM50 a desk.</h1>
+          <div class="hero__actions">
+            <a class="pill pill--light" href="short-term.html">See rental plans</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__slide hero__slide--light" data-slide="1" aria-hidden="true">
+        <video autoplay loop muted playsinline preload="none" poster="video/hero-turntable-poster.jpg" data-wide="video/hero-turntable.mp4" data-wide-poster="video/hero-turntable-poster.jpg" data-tall="video/hero-turntable-tall.mp4" data-tall-poster="video/hero-turntable-poster-tall.jpg"></video>
+        <div class="hero__scrim"></div>
+        <div class="container hero__inner">
+          <p class="hero__eyebrow">Dell, HP, Lenovo</p>
+          <h1>Business machines, not consumer ones.</h1>
+          <div class="hero__actions">
+            <a class="pill pill--dark" href="products.html">Browse equipment</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__slide" data-slide="2" aria-hidden="true">
+        <img src="img/editorial/hero-fleet.jpg" alt="" loading="lazy" />
+        <div class="hero__scrim"></div>
+        <div class="container hero__inner">
+          <p class="hero__eyebrow">Delivered and installed</p>
+          <h1>Every desk ready before your team arrives.</h1>
+          <div class="hero__actions">
+            <a class="pill pill--light" href="contact.html">Talk to us</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero__dots" role="tablist" aria-label="Hero slides">
+        <button type="button" class="hero__dot is-active" data-goto="0" role="tab" aria-selected="true" aria-label="Slide 1"><span class="hero__dot-fill"></span></button>
+        <button type="button" class="hero__dot" data-goto="1" role="tab" aria-selected="false" aria-label="Slide 2"><span class="hero__dot-fill"></span></button>
+        <button type="button" class="hero__dot" data-goto="2" role="tab" aria-selected="false" aria-label="Slide 3"><span class="hero__dot-fill"></span></button>
+      </div>
+    </section>
+
+    <section class="marquee">
+      <div class="container"><p class="marquee__label">Authorised dealer</p></div>
+      <div class="marquee__track"><div class="marquee__set"><span><img src="img/brands/dell.svg" alt="Dell" height="50" /></span><span><img src="img/brands/hp.svg" alt="HP" height="44" /></span><span><img src="img/brands/lenovo.svg" alt="Lenovo" height="27" /></span><span><img src="img/brands/microsoft.svg" alt="Microsoft" height="36" /></span><span><img src="img/brands/kaspersky.svg" alt="Kaspersky" height="27" /></span><span><img src="img/brands/acronis.svg" alt="Acronis" height="27" /></span></div></div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <div class="tabs" data-tabs="home">
+          <button type="button" data-tab="plans" aria-selected="true">Rental plans</button>
+          <button type="button" data-tab="laptops" aria-selected="false">Laptops</button>
+          <button type="button" data-tab="desktops" aria-selected="false">Desktops</button>
+        </div>
+        <a class="link-more" href="products.html">All equipment</a>
+      </div>
+      <div class="grid" data-tab-panel="plans" data-tabs-for="home">
+
+          <a class="pcard reveal" data-reveal-delay="0" data-collection="short-term"
+             href="product.html?model=desktop-rental-monthly-plan-basic">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="desktop-rental-monthly-plan-basic"
+                      aria-pressed="false" aria-label="Save DESKTOP PLAN BASIC">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-optiplex-3060-desktop-1.webp" alt="DESKTOP PLAN BASIC" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-optiplex-3060-desktop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Desktop Plan Basic</span>
+              <span class="pcard__price">RM100 / month</span>
+              <span class="pcard__cat">Short term</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="60" data-collection="short-term"
+             href="product.html?model=desktop-rental-monthly-plan-mid-range">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="desktop-rental-monthly-plan-mid-range"
+                      aria-pressed="false" aria-label="Save DESKTOP PLAN MID RANGE">&#9825;</button>
+              <img class="is-base" src="img/tiles/hp-elitedesk-800-g3-desktop-1.webp" alt="DESKTOP PLAN MID RANGE" loading="lazy" />
+              <img class="is-hover" src="img/tiles/hp-elitedesk-800-g3-desktop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Desktop Plan Mid Range</span>
+              <span class="pcard__price">RM140 / month</span>
+              <span class="pcard__cat">Short term</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="120" data-collection="short-term"
+             href="product.html?model=desktop-rental-monthly-plan-advanced">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="desktop-rental-monthly-plan-advanced"
+                      aria-pressed="false" aria-label="Save DESKTOP PLAN ADVANCED">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-optiplex-5080sff-desktop-1.webp" alt="DESKTOP PLAN ADVANCED" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-optiplex-5080sff-desktop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Desktop Plan Advanced</span>
+              <span class="pcard__price">RM180 / month</span>
+              <span class="pcard__cat">Short term</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="180" data-collection="short-term"
+             href="product.html?model=laptop-rental-monthly-plan-basic">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="laptop-rental-monthly-plan-basic"
+                      aria-pressed="false" aria-label="Save LAPTOP PLAN BASIC">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-latitude-3400-laptop-1.webp" alt="LAPTOP PLAN BASIC" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-latitude-3400-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Laptop Plan Basic</span>
+              <span class="pcard__price">RM100 / month</span>
+              <span class="pcard__cat">Short term</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="0" data-collection="short-term"
+             href="product.html?model=laptop-rental-monthly-plan-mid-range">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="laptop-rental-monthly-plan-mid-range"
+                      aria-pressed="false" aria-label="Save LAPTOP PLAN MID RANGE">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-latitude-5400-laptop-1.webp" alt="LAPTOP PLAN MID RANGE" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-latitude-5400-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Laptop Plan Mid Range</span>
+              <span class="pcard__price">RM140 / month</span>
+              <span class="pcard__cat">Short term</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="60" data-collection="short-term"
+             href="product.html?model=laptop-rental-monthly-plan-advanced">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="laptop-rental-monthly-plan-advanced"
+                      aria-pressed="false" aria-label="Save LAPTOP PLAN ADVANCED">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-latitude-5420-laptop-1.webp" alt="LAPTOP PLAN ADVANCED" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-latitude-5420-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Laptop Plan Advanced</span>
+              <span class="pcard__price">RM180 / month</span>
+              <span class="pcard__cat">Short term</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="120" data-collection="short-term"
+             href="product.html?model=apple-macbook-air-m2-short-rental-plan">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="apple-macbook-air-m2-short-rental-plan"
+                      aria-pressed="false" aria-label="Save MACBOOK AIR M2">&#9825;</button>
+              <img class="is-base" src="img/tiles/apple-macbook-air-m2-1.webp" alt="MACBOOK AIR M2" loading="lazy" />
+              <img class="is-hover" src="img/tiles/apple-macbook-air-m2-1.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Macbook Air M2</span>
+              <span class="pcard__price">RM300 / month</span>
+              <span class="pcard__cat">Short term</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="180" data-collection="long-term"
+             href="product.html?model=desktop-rental-plan">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="desktop-rental-plan"
+                      aria-pressed="false" aria-label="Save DESKTOP PLAN BASIC">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-optiplex-3060-desktop-1.webp" alt="DESKTOP PLAN BASIC" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-optiplex-3060-desktop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Desktop Plan Basic</span>
+              <span class="pcard__price">RM50 / month</span>
+              <span class="pcard__cat">Long term</span>
+            </div>
+          </a>
+      </div>
+      <div class="grid" data-tab-panel="laptops" data-tabs-for="home" hidden>
+
+          <a class="pcard reveal" data-reveal-delay="0" data-collection="new-laptop"
+             href="product.html?model=hp-probook-440-g10-laptop">
+            <div class="pcard__media">
+              <span class="pcard__badge pcard__badge--sale">Sale</span>
+              <button class="pcard__fav" type="button" data-fav="hp-probook-440-g10-laptop"
+                      aria-pressed="false" aria-label="Save HP PROBOOK 440 G10">&#9825;</button>
+              <img class="is-base" src="img/tiles/hp-probook-440-g10-laptop-1.webp" alt="HP PROBOOK 440 G10" loading="lazy" />
+              <img class="is-hover" src="img/tiles/hp-probook-440-g10-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">HP Probook 440 G10</span>
+              <span class="pcard__price"><span class="pcard__was">RM4,000.00</span>RM3,500.00</span>
+              <span class="pcard__cat">New laptop</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="60" data-collection="new-laptop"
+             href="product.html?model=dell-latitude-3450-laptop">
+            <div class="pcard__media">
+              <span class="pcard__badge pcard__badge--sale">Sale</span>
+              <button class="pcard__fav" type="button" data-fav="dell-latitude-3450-laptop"
+                      aria-pressed="false" aria-label="Save DELL LATITUDE 3450">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-latitude-3450-laptop-1.webp" alt="DELL LATITUDE 3450" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-latitude-3450-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Dell Latitude 3450</span>
+              <span class="pcard__price"><span class="pcard__was">RM4,000.00</span>RM3,500.00</span>
+              <span class="pcard__cat">New laptop</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="120" data-collection="new-laptop"
+             href="product.html?model=dell-dc-15250-laptop">
+            <div class="pcard__media">
+              <span class="pcard__badge pcard__badge--sale">Sale</span>
+              <button class="pcard__fav" type="button" data-fav="dell-dc-15250-laptop"
+                      aria-pressed="false" aria-label="Save DELL DC 15250">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-dc-15250-laptop-1.webp" alt="DELL DC 15250" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-dc-15250-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Dell Dc 15250</span>
+              <span class="pcard__price"><span class="pcard__was">RM3,000.00</span>RM2,500.00</span>
+              <span class="pcard__cat">New laptop</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="180" data-collection="ref-laptop"
+             href="product.html?model=hp-zbook-14-g7-laptop">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="hp-zbook-14-g7-laptop"
+                      aria-pressed="false" aria-label="Save HP ZBOOK 14 G7">&#9825;</button>
+              <img class="is-base" src="img/tiles/hp-zbook-14-g7-laptop-1.webp" alt="HP ZBOOK 14 G7" loading="lazy" />
+              <img class="is-hover" src="img/tiles/hp-zbook-14-g7-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">HP Zbook 14 G7</span>
+              <span class="pcard__price">RM2,000.00</span>
+              <span class="pcard__cat">Refurbished laptop</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="0" data-collection="ref-laptop"
+             href="product.html?model=hp-probook-450-g7-laptop">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="hp-probook-450-g7-laptop"
+                      aria-pressed="false" aria-label="Save HP PROBOOK 450 G7">&#9825;</button>
+              <img class="is-base" src="img/tiles/hp-probook-450-g7-laptop-1.webp" alt="HP PROBOOK 450 G7" loading="lazy" />
+              <img class="is-hover" src="img/tiles/hp-probook-450-g7-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">HP Probook 450 G7</span>
+              <span class="pcard__price">RM1,900.00</span>
+              <span class="pcard__cat">Refurbished laptop</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="60" data-collection="ref-laptop"
+             href="product.html?model=hp-probook-440-g8-laptop">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="hp-probook-440-g8-laptop"
+                      aria-pressed="false" aria-label="Save HP PROBOOK 440 G8">&#9825;</button>
+              <img class="is-base" src="img/tiles/hp-probook-440-g8-laptop-1.webp" alt="HP PROBOOK 440 G8" loading="lazy" />
+              <img class="is-hover" src="img/tiles/hp-probook-440-g8-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">HP Probook 440 G8</span>
+              <span class="pcard__price">RM1,900.00</span>
+              <span class="pcard__cat">Refurbished laptop</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="120" data-collection="ref-laptop"
+             href="product.html?model=dell-latitude-5420-laptop">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="dell-latitude-5420-laptop"
+                      aria-pressed="false" aria-label="Save DELL LATITUDE 5420">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-latitude-5420-laptop-1.webp" alt="DELL LATITUDE 5420" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-latitude-5420-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Dell Latitude 5420</span>
+              <span class="pcard__price">RM1,900.00</span>
+              <span class="pcard__cat">Refurbished laptop</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="180" data-collection="ref-laptop"
+             href="product.html?model=dell-latitude-5400-laptop">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="dell-latitude-5400-laptop"
+                      aria-pressed="false" aria-label="Save DELL LATITUDE 5400">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-latitude-5400-laptop-1.webp" alt="DELL LATITUDE 5400" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-latitude-5400-laptop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Dell Latitude 5400</span>
+              <span class="pcard__price">RM1,500.00</span>
+              <span class="pcard__cat">Refurbished laptop</span>
+            </div>
+          </a>
+      </div>
+      <div class="grid" data-tab-panel="desktops" data-tabs-for="home" hidden>
+
+          <a class="pcard reveal" data-reveal-delay="0" data-collection="ref-desktop"
+             href="product.html?model=dell-optiplex-5080sff-desktop">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="dell-optiplex-5080sff-desktop"
+                      aria-pressed="false" aria-label="Save DELL OPTIPLEX 5080 SFF">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-optiplex-5080sff-desktop-1.webp" alt="DELL OPTIPLEX 5080 SFF" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-optiplex-5080sff-desktop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Dell Optiplex 5080 SFF</span>
+              <span class="pcard__price">RM2,000.00</span>
+              <span class="pcard__cat">Refurbished desktop</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="60" data-collection="ref-desktop"
+             href="product.html?model=dell-optiplex-3060-desktop">
+            <div class="pcard__media">
+              
+              <button class="pcard__fav" type="button" data-fav="dell-optiplex-3060-desktop"
+                      aria-pressed="false" aria-label="Save DELL OPTIPLEX 3060">&#9825;</button>
+              <img class="is-base" src="img/tiles/dell-optiplex-3060-desktop-1.webp" alt="DELL OPTIPLEX 3060" loading="lazy" />
+              <img class="is-hover" src="img/tiles/dell-optiplex-3060-desktop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">Dell Optiplex 3060</span>
+              <span class="pcard__price">RM1,500.00</span>
+              <span class="pcard__cat">Refurbished desktop</span>
+            </div>
+          </a>
+
+          <a class="pcard reveal" data-reveal-delay="120" data-collection="ref-desktop"
+             href="product.html?model=hp-elitedesk-800-g3-desktop">
+            <div class="pcard__media">
+              <span class="pcard__badge pcard__badge--sale">Sale</span>
+              <button class="pcard__fav" type="button" data-fav="hp-elitedesk-800-g3-desktop"
+                      aria-pressed="false" aria-label="Save HP ELITEDESK 800 G3">&#9825;</button>
+              <img class="is-base" src="img/tiles/hp-elitedesk-800-g3-desktop-1.webp" alt="HP ELITEDESK 800 G3" loading="lazy" />
+              <img class="is-hover" src="img/tiles/hp-elitedesk-800-g3-desktop-2.webp" alt="" aria-hidden="true" loading="lazy" />
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__name">HP Elitedesk 800 G3</span>
+              <span class="pcard__price"><span class="pcard__was">RM1,400.00</span>RM900.00</span>
+              <span class="pcard__cat">Refurbished desktop</span>
+            </div>
+          </a>
+      </div>
+    </section>
+
+    <section class="section--tight container">
+      <div class="section-head"><h2>Browse by category</h2></div>
+      <div class="grid grid--3">
+
+          <a class="cat reveal" data-reveal-delay="0" href="products.html?c=long-term">
+            <img src="img/stills/card-laptop-portrait.jpg" alt="Long term" loading="lazy" />
+            <span class="cat__label">Long term</span>
+          </a>
+
+          <a class="cat reveal" data-reveal-delay="80" href="products.html?c=short-term">
+            <img src="img/stills/card-tower-portrait.jpg" alt="Short term" loading="lazy" />
+            <span class="cat__label">Short term</span>
+          </a>
+
+          <a class="cat reveal" data-reveal-delay="160" href="products.html?c=ref-laptop">
+            <img src="img/stills/feature-laptop-square.jpg" alt="Refurbished" loading="lazy" />
+            <span class="cat__label">Refurbished</span>
+          </a>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="statement reveal">Everything a desk needs, on one monthly line.</h2>
+      <p class="t-lead reveal" data-reveal-delay="80" style="margin-top:20px;max-width:52ch">Machine, monitor, licence, delivery, installation, warranty, insurance and support. One price, one invoice, no capital outlay.</p>
+    </section>
+
+    <section class="section--tight container">
+      <div class="band reveal">
+        <img src="img/editorial/band-team.jpg" alt="The MMX Solutions team preparing rental laptops in Kepong" />
+        <div class="band__inner">
+          <h2>Twenty years of equipping offices</h2>
+          <p class="t-body">MMX Solutions has supplied and supported office IT in Malaysia since 2006. MAXRENTAL is our leasing scheme — built for businesses that would rather spread the cost than tie up capital.</p>
+          <p style="margin-top:22px"><a class="pill pill--light" href="about.html">About MMX Solutions</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="trust">
+
+          <div class="reveal" data-reveal-delay="0">
+            <h4>Quick approval</h4>
+            <p>Most rentals approved the same working day.</p>
+          </div>
+
+          <div class="reveal" data-reveal-delay="60">
+            <h4>Free delivery &amp; installation</h4>
+            <p>Set up at your desks, no hidden charges.</p>
+          </div>
+
+          <div class="reveal" data-reveal-delay="120">
+            <h4>Warranty &amp; insurance</h4>
+            <p>Hardware cover for the whole rental term.</p>
+          </div>
+
+          <div class="reveal" data-reveal-delay="180">
+            <h4>Remote &amp; on-site support</h4>
+            <p>On-site within the Klang Valley.</p>
+          </div>
+      </div>
+    </section>
+
+    <section class="section--tight container">
+      <div class="section-head">
+        <h2>From the journal</h2>
+        <a class="link-more" href="news.html">All posts</a>
+      </div>
+      <div class="grid grid--3">
+
+          <a class="post reveal" data-reveal-delay="0" href="news.html">
+            <div class="post__media"><img src="img/editorial/journal-1.jpg" alt="" loading="lazy" /></div>
+            <p class="post__tag">Guide</p>
+            <h3>Why renting IT equipment is the smarter choice for Malaysian SMEs</h3>
+            <p class="post__more link-more">Read more</p>
+          </a>
+
+          <a class="post reveal" data-reveal-delay="80" href="news.html">
+            <div class="post__media"><img src="img/editorial/journal-2.jpg" alt="" loading="lazy" /></div>
+            <p class="post__tag">Guide</p>
+            <h3>How different businesses benefit from IT equipment rental</h3>
+            <p class="post__more link-more">Read more</p>
+          </a>
+
+          <a class="post reveal" data-reveal-delay="160" href="news.html">
+            <div class="post__media"><img src="img/editorial/journal-3.jpg" alt="" loading="lazy" /></div>
+            <p class="post__tag">Tips</p>
+            <h3>How to choose the right laptop specs for your business tasks</h3>
+            <p class="post__more link-more">Read more</p>
+          </a>
+      </div>
+    </section>
+
+    <section class="quotes">
+      <div class="container"><h2 style="margin-bottom:26px">What clients say</h2></div>
+      <div class="quotes__track">
+        <figure class="quote">
+          <figcaption class="quote__who">Mimi Mardiana</figcaption>
+          <p>&ldquo;Excellent service. The rental process was smooth and the equipment provided was in great condition. The team was responsive and helpful throughout.&rdquo;</p>
+          <p class="quote__product">Rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Sukumaran Narmitha</figcaption>
+          <p>&ldquo;MMX Solutions has been a great help for me and my company in finding the rental laptops we needed. They were very helpful with every query we had.&rdquo;</p>
+          <p class="quote__product">Laptop rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Navin Navin</figcaption>
+          <p>&ldquo;Good and fast service. Been using MMX for a year now and it has been a good experience. Keep up the good work.&rdquo;</p>
+          <p class="quote__product">Long term rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Xin Yeh Chen</figcaption>
+          <p>&ldquo;Good renting experience. Fast, easy and secure. Easy to communicate and fast approval.&rdquo;</p>
+          <p class="quote__product">Rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Edmond Lang</figcaption>
+          <p>&ldquo;Good service, speedy communication. Provide good Mac rental service.&rdquo;</p>
+          <p class="quote__product">MacBook rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Yuen Sook Ying</figcaption>
+          <p>&ldquo;Great service and reasonable prices. Very satisfied with the overall experience.&rdquo;</p>
+          <p class="quote__product">Rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Mimi Mardiana</figcaption>
+          <p>&ldquo;Excellent service. The rental process was smooth and the equipment provided was in great condition. The team was responsive and helpful throughout.&rdquo;</p>
+          <p class="quote__product">Rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Sukumaran Narmitha</figcaption>
+          <p>&ldquo;MMX Solutions has been a great help for me and my company in finding the rental laptops we needed. They were very helpful with every query we had.&rdquo;</p>
+          <p class="quote__product">Laptop rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Navin Navin</figcaption>
+          <p>&ldquo;Good and fast service. Been using MMX for a year now and it has been a good experience. Keep up the good work.&rdquo;</p>
+          <p class="quote__product">Long term rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Xin Yeh Chen</figcaption>
+          <p>&ldquo;Good renting experience. Fast, easy and secure. Easy to communicate and fast approval.&rdquo;</p>
+          <p class="quote__product">Rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Edmond Lang</figcaption>
+          <p>&ldquo;Good service, speedy communication. Provide good Mac rental service.&rdquo;</p>
+          <p class="quote__product">MacBook rental</p>
+        </figure>
+        <figure class="quote">
+          <figcaption class="quote__who">Yuen Sook Ying</figcaption>
+          <p>&ldquo;Great service and reasonable prices. Very satisfied with the overall experience.&rdquo;</p>
+          <p class="quote__product">Rental</p>
+        </figure></div>
+    </section>
+
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <img src="img/logo-ink.png" alt="MAXRENTAL" width="196" height="41"
+               style="margin-bottom:16px" />
+          <p class="t-meta" style="max-width:30ch">
+            Office IT rental and support across Malaysia since 2006.
+          </p>
+        </div>
+        <div>
+          <h4>Rent</h4>
+          <ul>
+            <li><a href="short-term.html">Short term</a></li>
+            <li><a href="long-term.html">Long term</a></li>
+            <li><a href="products.html">All equipment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">PC sales</a></li>
+            <li><a href="services.html">IT support</a></li>
+            <li><a href="services.html">Backup solutions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="news.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.instagram.com/maxrental.my/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <ul>
+            <li>175, Jalan KIP 5,<br />Taman Perindustrian KIP,<br />52200 Kepong, Wilayah Persekutuan Kuala Lumpur</li>
+            <li><a href="mailto:info@mmxsolutions.com.my">info@mmxsolutions.com.my</a></li>
+            <li><a href="tel:+60122199211">+6012-219 9211</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 MMX Solutions Sdn Bhd &middot; 200601022957 (742711-T)</span>
+        <span>
+          <a href="terms.html">Terms</a> &nbsp;
+          <a href="privacy.html">Privacy</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/app.js?v=1790237347"></script>
+</body>
+</html>

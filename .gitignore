@@ -1,0 +1,11 @@
+# The reference template's own media. all-natural.framer.website is a
+# commercial Framer template; these files were downloaded to measure its
+# motion and must not be redistributed.
+reference/
+
+# Working stills, regenerable from the brand kit
+reference-stills/
+
+__pycache__/
+*.pyc
+.DS_Store

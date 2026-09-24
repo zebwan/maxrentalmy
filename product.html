@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Equipment detail — MAXRENTAL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="Specification, pricing and rental terms for MAXRENTAL equipment." />
+<meta name="theme-color" content="#ffffff" />
+<meta property="og:title" content="Equipment detail — MAXRENTAL" />
+<meta property="og:description" content="Specification, pricing and rental terms for MAXRENTAL equipment." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="css/app.css?v=1790237347" />
+<link rel="icon" href="img/mark-512.png" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <nav class="nav">
+        <a href="products.html" aria-current="page">Equipment</a>
+        <a href="short-term.html">Rental plans</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="news.html">Journal</a>
+      </nav>
+      <button class="nav-toggle" type="button" aria-expanded="false">Menu</button>
+      <a class="brand" href="index.html" aria-label="MAXRENTAL home">
+        <img src="img/logo-ink.png" alt="MAXRENTAL" width="176" height="37" />
+      </a>
+      <div class="header__end">
+        <a href="contact.html">Contact</a>
+        <a href="products.html">Quote <span data-quote-count></span></a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="section--tight container">
+      <p class="t-meta pdp__back"><a href="products.html">&larr; All equipment</a></p>
+
+      <div class="pdp">
+        <div class="pdp__gallery">
+          <div class="pdp__thumbs" data-thumbs></div>
+          <div class="pdp__stage"><img data-stage alt="" /></div>
+        </div>
+
+        <div class="pdp__buy">
+          <div class="pdp__head">
+            <div>
+              <p class="t-meta" data-cat></p>
+              <h1 data-name>Equipment</h1>
+            </div>
+            <button class="fav" type="button" data-fav="" aria-label="Save">&#9825;</button>
+          </div>
+
+          <p class="pdp__price"><span data-price></span><s class="grey" data-was hidden></s></p>
+          <p class="t-body grey pdp__spec" data-spec></p>
+
+          <div class="pdp__field" data-term-field hidden>
+            <p class="t-meta">Rental term</p>
+            <div class="chips" data-terms></div>
+          </div>
+
+          <div class="pdp__cart">
+            <div class="qty">
+              <button type="button" data-qty="-1" aria-label="Fewer">&minus;</button>
+              <input type="text" inputmode="numeric" value="1" data-qty-value aria-label="Quantity" />
+              <button type="button" data-qty="1" aria-label="More">+</button>
+            </div>
+            <button class="pill pdp__add" type="button" data-add-quote="" data-label="Add to quote">Add to quote</button>
+          </div>
+          <p class="t-meta"><a class="link-more" href="terms.html">Delivery, support and returns</a></p>
+
+          <div class="acc">
+            <details open>
+              <summary>Specification</summary>
+              <div class="acc__body"><p class="t-body grey" data-acc-spec></p></div>
+            </details>
+            <details>
+              <summary>What's included</summary>
+              <div class="acc__body"><ul class="ticks"><li>Quick approval</li><li>Free delivery and installation</li><li>Hardware warranty and insurance</li><li>Remote and on-site support and maintenance</li></ul></div>
+            </details>
+            <details>
+              <summary>Rental terms</summary>
+              <div class="acc__body" data-acc-terms></div>
+            </details>
+            <details>
+              <summary>Optional add-ons</summary>
+              <div class="acc__body"><ul class="rows"><li><span>RAM upgrade, 8GB to 16GB</span><span class="grey">RM21.20</span></li><li><span>Microsoft Office Home &amp; Business 2024</span><span class="grey">RM53.00</span></li><li><span>Kaspersky Endpoint antivirus</span><span class="grey">RM10.60</span></li></ul></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pdp__detail">
+      <div class="pdp__detail-media"><img data-detail alt="" /></div>
+      <div class="pdp__detail-copy">
+        <div>
+          <p class="t-meta grey">How it ships</p>
+          <p class="t-lead">Delivered and installed anywhere in the Klang Valley, configured and
+             joined to your network before we leave. Elsewhere in Malaysia by courier.</p>
+        </div>
+        <div style="margin-top:34px">
+          <p class="t-meta grey">Support</p>
+          <p class="t-lead">Raise a ticket on WhatsApp 012-457 9211. Remote first, on-site when it
+             needs hands. Monday to Friday, 9am to 6pm, excluding public holidays.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="grid grid--2" style="align-items:start;gap:48px">
+        <div>
+          <p class="t-meta">Key specification</p>
+          <ul class="speclist" data-speclist></ul>
+        </div>
+        <div class="pdp__panel"><img data-panel alt="" /></div>
+      </div>
+    </section>
+
+    <section class="section--tight container">
+      <div class="section-head"><h2>More like this</h2>
+        <a class="link-more" href="products.html">All equipment</a></div>
+      <div class="grid" data-related></div>
+    </section>
+
+    <script src="js/products.js?v=1790237347"></script>
+    <script>
+      (function () {
+        var PLAN = {"desktop-rental-plan": "dell-optiplex-3060-desktop", "desktop-rental-monthly-plan-basic": "dell-optiplex-3060-desktop", "desktop-rental-monthly-plan-mid-range": "hp-elitedesk-800-g3-desktop", "desktop-rental-monthly-plan-mid-range-2": "hp-elitedesk-800-g3-desktop", "desktop-rental-monthly-plan-advanced": "dell-optiplex-5080sff-desktop", "desktop-rental-monthly-plan-advanced-2": "dell-optiplex-5080sff-desktop", "laptop-rental-monthly-plan-basic": "dell-latitude-3400-laptop", "laptop-rental-monthly-plan-basic-2": "dell-latitude-3400-laptop", "laptop-rental-monthly-plan-mid-range": "dell-latitude-5400-laptop", "laptop-rental-monthly-plan-mid-range-2": "dell-latitude-5400-laptop", "laptop-rental-monthly-plan-advanced": "dell-latitude-5420-laptop", "laptop-rental-monthly-plan-advanced-2": "dell-latitude-5420-laptop", "apple-macbook-air-m2-short-rental-plan": "apple-macbook-air-m2", "laptop-rental-plan-macbook": "apple-macbook-air-m2"};
+        var CAT = {"short-term": "Short term", "long-term": "Long term", "new-laptop": "New laptop", "new-desktop": "New desktop", "ref-laptop": "Refurbished laptop", "ref-desktop": "Refurbished desktop", "others": "Software"};
+        var TILES = {"dell-latitude-5420-laptop": 5, "dell-latitude-5470-laptop": 5, "hp-probook-440-g10-laptop": 4, "dell-latitude-5490-laptop": 5, "dell-latitude-3450-laptop": 6, "hp-probook-440-g8-laptop": 5, "dell-latitude-5400-laptop": 5, "dell-latitude-3400-laptop": 5, "lenovo-l380-laptop": 6, "hp-elitedesk-800-g3-desktop": 3, "dell-dc-15250-laptop": 5, "hp-zbook-14-g7-laptop": 5, "dell-optiplex-5080sff-desktop": 3, "hp-probook-450-g7-laptop": 5, "dell-optiplex-3060-desktop": 3, "microsoft-office-home-business-2024": 1, "apple-macbook-air-m2": 1};
+        var all = window.PRODUCTS || [];
+        var q = new URLSearchParams(location.search).get('model');
+        var p = all.filter(function (x) { return x.key === q; })[0] || all[0];
+        if (!p) return;
+
+        var base = PLAN[p.key] || p.key;
+        var n = TILES[base] || 1;
+        var img = function (i) { return 'img/tiles/' + base + '-' + i + '.webp'; };
+
+        /* Title case: the catalogue ships names shouting in caps. */
+        function title(t) {
+          return String(t).toLowerCase().replace(/\b([a-z])/g, function (m) { return m.toUpperCase(); })
+                  .replace(/\b(Ssd|Ram|Hdd|Sff|Hp|Pc|I3|I5|I7|Gb|Tb)\b/gi, function (m) { return m.toUpperCase(); });
+        }
+
+        var stage = document.querySelector('[data-stage]');
+        stage.src = img(1);
+        stage.alt = p.name;
+
+        var rail = document.querySelector('[data-thumbs]');
+        if (n > 1) {
+          for (var i = 1; i <= n; i++) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'pdp__thumb' + (i === 1 ? ' is-active' : '');
+            b.innerHTML = '<img src="' + img(i) + '" alt="" loading="lazy" />';
+            (function (src, el) {
+              el.addEventListener('click', function () {
+                stage.src = src;
+                rail.querySelectorAll('.pdp__thumb').forEach(function (x) { x.classList.remove('is-active'); });
+                el.classList.add('is-active');
+              });
+            })(img(i), b);
+            rail.appendChild(b);
+          }
+        } else {
+          rail.hidden = true;
+        }
+
+        document.querySelector('[data-cat]').textContent = CAT[p.collection] || '';
+        document.querySelector('[data-name]').textContent = title(p.name);
+        document.querySelector('[data-price]').textContent = p.price;
+        if (p.was) {
+          var w = document.querySelector('[data-was]');
+          w.textContent = p.was; w.hidden = false;
+        }
+        document.querySelector('[data-spec]').textContent = p.spec || '';
+        document.querySelector('[data-acc-spec]').textContent = p.spec || 'Ask us for the full specification.';
+        document.querySelector('[data-add-quote]').setAttribute('data-add-quote', p.key);
+        document.querySelector('[data-fav]').setAttribute('data-fav', p.key);
+        document.querySelector('[data-detail]').src = img(Math.min(2, n));
+        document.querySelector('[data-panel]').src = img(Math.min(3, n));
+
+        /* Rental term reads as a variant selector, the way the reference
+           offers sizes. It is a quote hint, not a price change. */
+        if (p.terms) {
+          document.querySelector('[data-term-field]').hidden = false;
+          var wrap = document.querySelector('[data-terms]');
+          p.terms.split('/').map(function (t) { return t.trim(); }).forEach(function (t, i) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'chip' + (i === 0 ? ' is-active' : '');
+            var num = t.replace(/[^0-9]/g, '');
+            b.textContent = num + (num === '1' ? ' month' : ' months');
+            b.addEventListener('click', function () {
+              wrap.querySelectorAll('.chip').forEach(function (x) { x.classList.remove('is-active'); });
+              b.classList.add('is-active');
+            });
+            wrap.appendChild(b);
+          });
+        }
+
+        var rows = [];
+        if (p.terms) rows.push(['Rental term', p.terms]);
+        if (p.warranty) rows.push(['Warranty', p.warranty]);
+        if (p.note) rows.push(['Note', p.note]);
+        rows.push(['Minimum order', 'No minimum. Single units welcome.']);
+        document.querySelector('[data-acc-terms]').innerHTML =
+          '<ul class="rows">' + rows.map(function (r) {
+            return '<li><span>' + r[0] + '</span><span class="grey">' + r[1] + '</span></li>';
+          }).join('') + '</ul>';
+
+        document.querySelector('[data-speclist]').innerHTML =
+          (p.spec || '').split(',').map(function (t) { return t.trim(); })
+            .filter(Boolean).map(function (t) { return '<li>' + t + '</li>'; }).join('')
+          || '<li>Specification on request</li>';
+
+        var rel = all.filter(function (x) { return x.collection === p.collection && x.key !== p.key; }).slice(0, 3);
+        if (!rel.length) rel = all.filter(function (x) { return x.key !== p.key; }).slice(0, 3);
+        document.querySelector('[data-related]').innerHTML = rel.map(function (x) {
+          var b = PLAN[x.key] || x.key;
+          var m = TILES[b] || 1;
+          var one = 'img/tiles/' + b + '-1.webp';
+          var two = 'img/tiles/' + b + '-' + Math.min(2, m) + '.webp';
+          return '<a class="pcard" href="product.html?model=' + x.key + '">' +
+                 '<div class="pcard__media">' +
+                 '<img class="is-base" src="' + one + '" alt="" loading="lazy" />' +
+                 '<img class="is-hover" src="' + two + '" alt="" aria-hidden="true" loading="lazy" />' +
+                 '</div>' +
+                 '<div class="pcard__body">' +
+                 '<span class="pcard__name">' + title(x.name) + '</span>' +
+                 '<span class="pcard__price">' + x.price + '</span>' +
+                 '<span class="pcard__cat">' + (CAT[x.collection] || '') + '</span>' +
+                 '</div></a>';
+        }).join('');
+
+        /* Quantity is carried into the quote note rather than priced here. */
+        var qty = document.querySelector('[data-qty-value]');
+        document.querySelectorAll('[data-qty]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            var v = Math.max(1, (parseInt(qty.value, 10) || 1) + Number(b.dataset.qty));
+            qty.value = v;
+          });
+        });
+
+        document.title = title(p.name) + ' — MAXRENTAL';
+      })();
+    </script>
+
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <img src="img/logo-ink.png" alt="MAXRENTAL" width="196" height="41"
+               style="margin-bottom:16px" />
+          <p class="t-meta" style="max-width:30ch">
+            Office IT rental and support across Malaysia since 2006.
+          </p>
+        </div>
+        <div>
+          <h4>Rent</h4>
+          <ul>
+            <li><a href="short-term.html">Short term</a></li>
+            <li><a href="long-term.html">Long term</a></li>
+            <li><a href="products.html">All equipment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">PC sales</a></li>
+            <li><a href="services.html">IT support</a></li>
+            <li><a href="services.html">Backup solutions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="news.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.instagram.com/maxrental.my/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <ul>
+            <li>175, Jalan KIP 5,<br />Taman Perindustrian KIP,<br />52200 Kepong, Wilayah Persekutuan Kuala Lumpur</li>
+            <li><a href="mailto:info@mmxsolutions.com.my">info@mmxsolutions.com.my</a></li>
+            <li><a href="tel:+60122199211">+6012-219 9211</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 MMX Solutions Sdn Bhd &middot; 200601022957 (742711-T)</span>
+        <span>
+          <a href="terms.html">Terms</a> &nbsp;
+          <a href="privacy.html">Privacy</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/app.js?v=1790237347"></script>
+</body>
+</html>
