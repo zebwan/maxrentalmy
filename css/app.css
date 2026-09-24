@@ -1,35 +1,50 @@
 /* ==========================================================================
    MAXRENTAL v2
    Design system rebuilt from all-natural.framer.website, measured not guessed.
-   The reference is near-monochrome on purpose: the UI is black on white and all
-   the colour arrives through the photography. That discipline is kept here —
-   MAXRENTAL's cyan appears only on interactive states, and the colour comes
-   from the navy product stills.
+
+   The reference is near-monochrome because its photography carries the colour.
+   MAXRENTAL's product shots are hardware on grey, which carries none, so the
+   colour is built from their own brand instead: navy #0D1126 sections, cool
+   surfaces, and cyan on every action.
+
+   Cyan has two shades and they are not interchangeable. White text on the
+   bright #00A2E8 is 2.9:1 and fails, so anything with text on it uses the
+   deep #0079AD (4.8:1). On navy the bright cyan reaches 6.5:1 and is the one
+   to use. Check any new pairing before adding it.
    ========================================================================== */
 
 :root {
-    /* ground */
+    /* ground — cool rather than neutral grey, so the page is never bare white */
     --page: #ffffff;
-    --surface: #f6f6f6;
-    --surface-2: #efefef;
+    --surface: #eef4f9;
+    --surface-2: #e4edf4;
 
     /* ink */
     --ink: #000000;
     --ink-2: #2e2e2e;
     --ink-3: #6b6b6b;
-    --ink-4: #9a9a9a;
+    /* #9a9a9a was 2.81:1 on white — inactive tabs, struck-through prices and
+       the small labels all use this, and all were under AA. #767676 is the
+       lightest grey that clears 4.5:1 on white. */
+    --ink-4: #767676;
 
-    /* lines */
-    --rule: #e4e4e4;
-    --rule-2: #c9c9c9;
+    /* lines, tinted to match the surfaces */
+    --rule: #dde6ee;
+    --rule-2: #bfcddb;
 
-    /* accent — MAXRENTAL cyan, interactive states only */
+    /* accent — MAXRENTAL cyan. --accent on dark only, --accent-deep on light */
     --accent: #00a2e8;
     --accent-deep: #0079ad;
+    --accent-press: #006d9c;
+    --accent-wash: #e3f1fb;
+
+    /* dark ground */
+    --ink-navy: #0d1126;
+    --navy-2: #171d3d;
+    --on-navy: #c7d4e2;
 
     /* semantic */
     --sale: #e01616;
-    --ink-navy: #0d1126;
 
     /* type */
     --f: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -275,19 +290,19 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
     height: 40px;
     padding-inline: 20px;
     border-radius: var(--r-pill);
-    background: var(--ink);
+    background: var(--accent-deep);
     color: #fff;
     font-size: 13px;
     letter-spacing: -0.2px;
     transition: background 180ms ease, color 180ms ease, transform 180ms ease;
 }
-.pill:hover { background: var(--accent-deep); }
+.pill:hover { background: var(--accent-press); }
 .pill:active { transform: translateY(1px); }
 
 .pill--light { background: #fff; color: var(--ink); }
-.pill--dark { background: var(--ink); color: #fff; }
-.pill--dark:hover { background: var(--accent-deep); color: #fff; }
-.pill--light:hover { background: var(--accent); color: #fff; }
+.pill--dark { background: var(--accent-deep); color: #fff; }
+.pill--dark:hover { background: var(--accent-press); color: #fff; }
+.pill--light:hover { background: var(--accent-deep); color: #fff; }
 
 .pill--ghost {
     background: transparent;
@@ -356,7 +371,7 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
     color: var(--ink-4);
     transition: color 180ms ease;
 }
-.tabs button[aria-selected="true"] { color: var(--ink); }
+.tabs button[aria-selected="true"] { color: var(--accent-deep); }
 .tabs button:hover { color: var(--ink-2); }
 
 /* ------------------------------------------------------------- grids ---- */
@@ -404,7 +419,8 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
     align-items: center;
     padding-inline: 10px;
     border-radius: var(--r-pill);
-    background: #fff;
+    background: var(--accent-deep);
+    color: #fff;
     font-size: 11px;
     letter-spacing: -0.1px;
 }
@@ -436,7 +452,7 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
 }
 .pcard__name { font-size: 14px; letter-spacing: -0.5px; overflow-wrap: anywhere; }
 .pcard__price { font-size: 14px; letter-spacing: -0.5px; text-align: right; white-space: nowrap; }
-.pcard__cat { grid-column: 1; font-size: 12px; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.02em; }
+.pcard__cat { grid-column: 1; font-size: 12px; color: var(--accent-press); text-transform: uppercase; letter-spacing: 0.02em; }
 .pcard__was { color: var(--ink-4); text-decoration: line-through; margin-right: 6px; }
 
 /* ----------------------------------------------------------- category --- */
@@ -498,6 +514,19 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
 
 /* ---------------------------------------------------------- statement --- */
 
+/* Full-bleed navy band. 100vw + the negative margin rather than a wrapper, so
+   the section keeps using the normal .container for its inner width. */
+.band-navy {
+    background: var(--ink-navy);
+    color: #fff;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding-block: clamp(52px, 6vw, 96px);
+}
+.band-navy h2, .band-navy .statement { color: #fff; }
+.band-navy .t-lead { color: var(--on-navy); }
+.band-navy em { color: var(--accent); font-style: normal; }
+
 .statement {
     font-size: clamp(28px, 4.4vw, 62px);
     line-height: 1.0;
@@ -512,12 +541,12 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
-    background: var(--rule);
+    background: var(--rule-2);
     border: 1px solid var(--rule);
     border-radius: var(--r-media);
     overflow: hidden;
 }
-.trust div { background: var(--page); padding: 22px 20px; }
+.trust div { background: var(--surface); padding: 22px 20px; }
 .trust h4 { font-size: 14px; letter-spacing: -0.5px; }
 .trust p { margin-top: 6px; font-size: 12px; color: var(--ink-3); }
 
@@ -537,43 +566,59 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
 
 /* ------------------------------------------------------- testimonials --- */
 
-.quotes { overflow: hidden; border-block: 1px solid var(--rule); padding-block: clamp(34px, 4vw, 56px); }
+.quotes {
+    overflow: hidden;
+    padding-block: clamp(44px, 5vw, 72px);
+    background: var(--ink-navy);
+    color: #fff;
+}
+.quotes h2 { color: #fff; }
 .quotes__track { display: flex; gap: 20px; width: max-content; animation: slide 64s linear infinite; }
 .quotes:hover .quotes__track { animation-play-state: paused; }
 .quote {
     width: clamp(280px, 30vw, 420px);
     padding: 24px;
-    border: 1px solid var(--rule);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--r-media);
-    background: var(--surface);
+    background: var(--navy-2);
+    color: #fff;
 }
-.quote p { margin-top: 12px; color: var(--ink-2); line-height: 1.4; }
-.quote__who { font-size: 14px; }
-.quote__product { margin-top: 16px; font-size: 12px; color: var(--ink-4); }
+.quote p { margin-top: 12px; color: var(--on-navy); line-height: 1.4; }
+.quote__who { font-size: 14px; color: #fff; }
+.quote .quote__product { margin-top: 16px; font-size: 12px; color: var(--accent); }
 
 /* ------------------------------------------------------------ footer ---- */
 
-.footer { border-top: 1px solid var(--rule); padding-block: clamp(40px, 5vw, 72px) 32px; }
+.footer {
+    background: var(--ink-navy);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding-block: clamp(44px, 5vw, 76px) 34px;
+}
 .footer__grid {
     display: grid;
     grid-template-columns: 1.4fr repeat(4, 1fr);
     gap: 32px 24px;
 }
-.footer h4 { font-size: 12px; color: var(--ink-4); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
+.footer h4 { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
 .footer li { margin-bottom: 8px; }
-.footer li a, .footer li { font-size: 13px; color: var(--ink-2); }
-.footer li a:hover { color: var(--accent-deep); }
+.footer li a, .footer li { font-size: 13px; color: var(--on-navy); }
+.footer li a:hover { color: #fff; }
+.footer .t-meta, .footer p, .footer a { color: var(--on-navy); }
+.footer .t-meta a:hover, .footer a:hover { color: #fff; }
 .footer__legal {
     margin-top: clamp(32px, 4vw, 56px);
     padding-top: 20px;
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
     display: flex;
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
     font-size: 12px;
-    color: var(--ink-4);
+    color: rgba(255, 255, 255, 0.62);
 }
+.footer__legal a { color: rgba(255, 255, 255, 0.62); }
+.footer__legal a:hover { color: #fff; }
 
 /* ------------------------------------------------------------ reveal ---- */
 /* The reference uses Motion's opacity fades. Short, soft, no big translations.

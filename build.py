@@ -145,7 +145,7 @@ def footer():
     <div class="container">
       <div class="footer__grid">
         <div>
-          <img src="img/logo-ink.png" alt="MAXRENTAL" width="196" height="41"
+          <img src="img/logo-white.png" alt="MAXRENTAL" width="196" height="41"
                style="margin-bottom:16px" />
           <p class="t-meta" style="max-width:30ch">
             Office IT rental and support across Malaysia since 2006.
@@ -427,9 +427,11 @@ def build_home():
       </div>
     </section>
 
-    <section class="section container">
-      <h2 class="statement reveal">{statement}</h2>
-      <p class="t-lead reveal" data-reveal-delay="80" style="margin-top:20px;max-width:52ch">{statement_sub}</p>
+    <section class="band-navy">
+      <div class="container">
+        <h2 class="statement reveal">{statement}</h2>
+        <p class="t-lead reveal" data-reveal-delay="80" style="margin-top:20px;max-width:52ch">{statement_sub}</p>
+      </div>
     </section>
 
     <section class="section--tight container">
