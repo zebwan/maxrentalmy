@@ -176,7 +176,7 @@ def footer():
             <li><a href="about.html">About</a></li>
             <li><a href="news.html">Journal</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="{instagram}" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="{instagram}" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           </ul>
         </div>
         <div>
@@ -1307,9 +1307,27 @@ PAGES = {
 }
 
 
+# Anything that leaves the site opens in a new tab. rel="noopener" is not
+# optional: without it the opened page gets a handle on ours via window.opener
+# and can navigate it away. Applied to the finished HTML rather than each link
+# by hand, so a link added later is covered automatically.
+EXTERNAL_A = re.compile(r'<a\b([^>]*?)href="(https?://[^"]+)"([^>]*?)>', re.I)
+
+
+def open_external_in_new_tab(html):
+    def fix(m):
+        before, href, after = m.group(1), m.group(2), m.group(3)
+        attrs = before + after
+        if 'target=' in attrs.lower():
+            return m.group(0)
+        return '<a%shref="%s"%s target="_blank" rel="noopener noreferrer">' % (
+            before, href, after.rstrip())
+    return EXTERNAL_A.sub(fix, html)
+
+
 def main():
     for name, fn in PAGES.items():
-        out = fn()
+        out = open_external_in_new_tab(fn())
         with open(os.path.join(ROOT, name), "w", encoding="utf-8") as f:
             f.write(out)
         print("%-20s %6d bytes" % (name, len(out)))
