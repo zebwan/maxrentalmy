@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
-<link rel="stylesheet" href="css/app.css?v=1790254020" />
+<link rel="stylesheet" href="css/app.css?v=1790255253" />
 <link rel="icon" href="img/mark-512.png" />
 </head>
 <body>
@@ -24,6 +24,9 @@
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
         <a href="news.html">Journal</a>
+        <button class="nav__cart" type="button" data-open-cart>Cart
+          <span class="cart-badge" data-cart-count hidden>0</span>
+        </button>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false">Menu</button>
       <a class="brand" href="index.html" aria-label="MAXRENTAL home">
@@ -31,7 +34,10 @@
       </a>
       <div class="header__end">
         <a href="contact.html">Contact</a>
-        <a href="products.html">Quote <span data-quote-count></span></a>
+        <button class="header__cart" type="button" data-open-cart
+                aria-haspopup="dialog" aria-expanded="false">Cart
+          <span class="cart-badge" data-cart-count hidden>0</span>
+        </button>
       </div>
     </div>
   </header>
@@ -60,7 +66,7 @@
                 <li>Hardware warranty and insurance</li>
                 <li>Remote and on-site support and maintenance</li>
               </ul>
-              <p style="margin-top:18px"><a class="pill" href="contact.html">Request a quote</a></p>
+              <p style="margin-top:18px"><a class="pill" href="contact.html">Talk to us</a></p>
             </div>
 
             <div class="reveal" style="border:1px solid var(--rule);border-radius:var(--r-media);padding:22px">
@@ -73,7 +79,7 @@
                 <li>Hardware warranty and insurance</li>
                 <li>Remote and on-site support and maintenance</li>
               </ul>
-              <p style="margin-top:18px"><a class="pill" href="contact.html">Request a quote</a></p>
+              <p style="margin-top:18px"><a class="pill" href="contact.html">Talk to us</a></p>
             </div>
 
             <div class="reveal" style="border:1px solid var(--rule);border-radius:var(--r-media);padding:22px">
@@ -86,7 +92,7 @@
                 <li>Hardware warranty and insurance</li>
                 <li>Remote and on-site support and maintenance</li>
               </ul>
-              <p style="margin-top:18px"><a class="pill" href="contact.html">Request a quote</a></p>
+              <p style="margin-top:18px"><a class="pill" href="contact.html">Talk to us</a></p>
             </div>
         </div>
 
@@ -102,7 +108,7 @@
                 <li>Hardware warranty and insurance</li>
                 <li>Remote and on-site support and maintenance</li>
               </ul>
-              <p style="margin-top:18px"><a class="pill" href="contact.html">Request a quote</a></p>
+              <p style="margin-top:18px"><a class="pill" href="contact.html">Talk to us</a></p>
             </div>
 
             <div class="reveal" style="border:1px solid var(--rule);border-radius:var(--r-media);padding:22px">
@@ -115,7 +121,7 @@
                 <li>Hardware warranty and insurance</li>
                 <li>Remote and on-site support and maintenance</li>
               </ul>
-              <p style="margin-top:18px"><a class="pill" href="contact.html">Request a quote</a></p>
+              <p style="margin-top:18px"><a class="pill" href="contact.html">Talk to us</a></p>
             </div>
 
             <div class="reveal" style="border:1px solid var(--rule);border-radius:var(--r-media);padding:22px">
@@ -128,7 +134,7 @@
                 <li>Hardware warranty and insurance</li>
                 <li>Remote and on-site support and maintenance</li>
               </ul>
-              <p style="margin-top:18px"><a class="pill" href="contact.html">Request a quote</a></p>
+              <p style="margin-top:18px"><a class="pill" href="contact.html">Talk to us</a></p>
             </div>
         </div>
 
@@ -206,6 +212,36 @@
       </div>
     </div>
   </footer>
-  <script src="js/app.js?v=1790254020"></script>
+  <div class="cart" data-cart-drawer hidden>
+    <div class="cart__scrim" data-close-cart></div>
+    <aside class="cart__panel" role="dialog" aria-modal="true" aria-label="Cart">
+      <header class="cart__head">
+        <h2 class="cart__title">Cart</h2>
+        <button class="cart__x" type="button" data-close-cart aria-label="Close">&times;</button>
+      </header>
+
+      <div class="cart__body" data-cart-body></div>
+
+      <footer class="cart__foot" data-cart-foot hidden>
+        <div class="cart__sum" data-sum-rent hidden>
+          <span>Monthly rental</span>
+          <strong data-cart-rent>RM0</strong>
+        </div>
+        <div class="cart__sum" data-sum-buy hidden>
+          <span>One-off purchase</span>
+          <strong data-cart-buy>RM0</strong>
+        </div>
+        <p class="cart__note">
+          Rental prices are per desk, per month. Delivery and installation included.
+        </p>
+        <!-- Placeholder target: point this at the payment gateway once it exists. -->
+        <a class="pill cart__cta" href="contact.html">Checkout</a>
+        <button class="cart__clear" type="button" data-clear-cart>Clear cart</button>
+      </footer>
+    </aside>
+  </div>
+  <script src="js/products.js?v=1790255253"></script>
+  <script>window.MR_PLAN_IMAGE = {"desktop-rental-plan": "dell-optiplex-3060-desktop", "desktop-rental-monthly-plan-basic": "dell-optiplex-3060-desktop", "desktop-rental-monthly-plan-mid-range": "hp-elitedesk-800-g3-desktop", "desktop-rental-monthly-plan-mid-range-2": "hp-elitedesk-800-g3-desktop", "desktop-rental-monthly-plan-advanced": "dell-optiplex-5080sff-desktop", "desktop-rental-monthly-plan-advanced-2": "dell-optiplex-5080sff-desktop", "laptop-rental-monthly-plan-basic": "dell-latitude-3400-laptop", "laptop-rental-monthly-plan-basic-2": "dell-latitude-3400-laptop", "laptop-rental-monthly-plan-mid-range": "dell-latitude-5400-laptop", "laptop-rental-monthly-plan-mid-range-2": "dell-latitude-5400-laptop", "laptop-rental-monthly-plan-advanced": "dell-latitude-5420-laptop", "laptop-rental-monthly-plan-advanced-2": "dell-latitude-5420-laptop", "apple-macbook-air-m2-short-rental-plan": "apple-macbook-air-m2", "laptop-rental-plan-macbook": "apple-macbook-air-m2"};</script>
+  <script src="js/app.js?v=1790255253"></script>
 </body>
 </html>

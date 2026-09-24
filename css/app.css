@@ -59,6 +59,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* The hidden attribute is only display:none in the UA sheet, so any author
+   rule setting display (the summary rows are flex) silently beats it. */
+[hidden] { display: none !important; }
+
 html { -webkit-text-size-adjust: 100%; }
 
 body {
@@ -815,4 +819,160 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
     .pdp__thumb { flex: 0 0 58px; }
     .pdp__detail { grid-template-columns: 1fr; }
     .pdp__detail-copy { padding-inline: 0; }
+}
+
+/* ---------------------------------------------------------- cart drawer -- */
+
+.header__cart, .nav__cart {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    font-size: 12px;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: color 160ms ease;
+}
+.header__cart:hover, .nav__cart:hover { color: var(--accent-deep); }
+.nav__cart { display: none; }
+
+.cart-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding-inline: 5px;
+    border-radius: var(--r-pill);
+    background: var(--accent-deep);
+    color: #fff;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.cart { position: fixed; inset: 0; z-index: 200; }
+.cart__scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 17, 38, 0.42);
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+.cart.is-open .cart__scrim { opacity: 1; }
+
+.cart__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(420px, 100%);
+    height: 100%;
+    background: var(--page);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 320ms cubic-bezier(.4, 0, .2, 1);
+    box-shadow: -18px 0 46px rgba(13, 17, 38, 0.16);
+}
+.cart.is-open .cart__panel { transform: translateX(0); }
+
+.cart__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--rule);
+}
+.cart__title { font-size: 16px; letter-spacing: -0.03em; }
+.cart__x {
+    background: none; border: 0; cursor: pointer;
+    font-size: 22px; line-height: 1; color: var(--ink-3); padding: 2px 4px;
+}
+.cart__x:hover { color: var(--ink); }
+
+/* the list scrolls, the summary stays put */
+.cart__body { flex: 1 1 auto; overflow-y: auto; padding: 6px 22px; }
+
+.cart-empty { padding-block: 34px; display: grid; gap: 14px; justify-items: start; }
+
+.cart-list { display: grid; }
+.cart-item {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+    gap: 14px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+}
+.cart-item__media {
+    background: var(--surface);
+    border-radius: var(--r-tile);
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+.cart-item__media img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+.cart-item__main { display: grid; gap: 7px; min-width: 0; }
+.cart-item__name { font-size: 14px; letter-spacing: -0.3px; }
+.cart-item__term { font-size: 12px; color: var(--ink-3); }
+.cart-item__side { display: grid; gap: 10px; justify-items: end; }
+.cart-item__price { font-size: 13px; white-space: nowrap; }
+.cart-item__x {
+    background: none; border: 0; cursor: pointer;
+    font-size: 17px; line-height: 1; color: var(--ink-4); padding: 0 2px;
+}
+.cart-item__x:hover { color: var(--sale); }
+
+.qty--sm { height: 30px; justify-self: start; }
+.qty--sm button { width: 28px; font-size: 14px; }
+.qty__n { min-width: 24px; text-align: center; font-size: 13px; }
+
+.cart__foot {
+    border-top: 1px solid var(--rule);
+    padding: 18px 22px calc(20px + env(safe-area-inset-bottom, 0px));
+    background: var(--surface);
+}
+.cart__sum {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 15px;
+}
+.cart__sum strong { font-size: 19px; letter-spacing: -0.03em; }
+.cart__note { margin-top: 8px; font-size: 12px; color: var(--ink-3); }
+.cart__cta { width: 100%; justify-content: center; margin-top: 16px; }
+.cart__clear {
+    width: 100%;
+    margin-top: 10px;
+    background: none;
+    border: 0;
+    padding: 6px;
+    font: inherit;
+    font-size: 12px;
+    color: var(--ink-3);
+    cursor: pointer;
+}
+.cart__clear:hover { color: var(--sale); }
+
+body.has-drawer { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+    .cart__panel, .cart__scrim { transition: none; }
+}
+
+@media (max-width: 860px) {
+    /* The header row is tight on a phone, so the cart button moves into the
+       menu panel rather than disappearing. */
+    .header__cart { display: none; }
+    .nav__cart {
+        display: inline-flex;
+        font-size: 22px;
+        letter-spacing: -0.04em;
+        color: var(--ink);
+        padding-block: 7px;
+    }
+    .cart__panel { width: 100%; }
 }

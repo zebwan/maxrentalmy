@@ -125,6 +125,9 @@ def header(current=""):
     <div class="container header__inner">
       <nav class="nav">
 {links}
+        <button class="nav__cart" type="button" data-open-cart>Cart
+          <span class="cart-badge" data-cart-count hidden>0</span>
+        </button>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false">Menu</button>
       <a class="brand" href="index.html" aria-label="MAXRENTAL home">
@@ -132,7 +135,10 @@ def header(current=""):
       </a>
       <div class="header__end">
         <a href="contact.html">Contact</a>
-        <a href="products.html">Quote <span data-quote-count></span></a>
+        <button class="header__cart" type="button" data-open-cart
+                aria-haspopup="dialog" aria-expanded="false">Cart
+          <span class="cart-badge" data-cart-count hidden>0</span>
+        </button>
       </div>
     </div>
   </header>""".format(links=links)
@@ -198,14 +204,59 @@ def footer():
 
 def tail():
     return """
+  <script src="js/products.js?v={ver}"></script>
+  <script>window.MR_PLAN_IMAGE = {plan_map};</script>
   <script src="js/app.js?v={ver}"></script>
 </body>
 </html>
-""".format(ver=VER)
+""".format(ver=VER, plan_map=str(PLAN_IMAGE).replace("'", '"'))
+
+
+
+def cart_drawer():
+    """Shopping cart.
+
+    Rentals bill monthly and outright purchases bill once, so the two can never
+    be summed into a single figure; the footer keeps them on separate lines.
+
+    NOTE: there is no payment gateway yet. Checkout routes to the contact form
+    as a placeholder — swap that href for the gateway's session URL when it
+    exists, and the totals here are what it should be handed.
+    """
+    return """
+  <div class="cart" data-cart-drawer hidden>
+    <div class="cart__scrim" data-close-cart></div>
+    <aside class="cart__panel" role="dialog" aria-modal="true" aria-label="Cart">
+      <header class="cart__head">
+        <h2 class="cart__title">Cart</h2>
+        <button class="cart__x" type="button" data-close-cart aria-label="Close">&times;</button>
+      </header>
+
+      <div class="cart__body" data-cart-body></div>
+
+      <footer class="cart__foot" data-cart-foot hidden>
+        <div class="cart__sum" data-sum-rent hidden>
+          <span>Monthly rental</span>
+          <strong data-cart-rent>RM0</strong>
+        </div>
+        <div class="cart__sum" data-sum-buy hidden>
+          <span>One-off purchase</span>
+          <strong data-cart-buy>RM0</strong>
+        </div>
+        <p class="cart__note">
+          Rental prices are per desk, per month. Delivery and installation included.
+        </p>
+        <!-- Placeholder target: point this at the payment gateway once it exists. -->
+        <a class="pill cart__cta" href="contact.html">Checkout</a>
+        <button class="cart__clear" type="button" data-clear-cart>Clear cart</button>
+      </footer>
+    </aside>
+  </div>"""
 
 
 def page(meta, body, current=""):
-    return head(meta) + header(current) + "\n  <main>" + body + "\n  </main>" + footer() + tail()
+    return (head(meta) + header(current) + "\n  <main>" + body + "\n  </main>"
+            + footer() + cart_drawer() + tail())
 
 
 # -------------------------------------------------------------- components
@@ -275,7 +326,7 @@ def tier_row(tiers, panel, group, hidden=False):
               <ul style="margin-top:16px;border-top:1px solid var(--rule)">
 {includes}
               </ul>
-              <p style="margin-top:18px"><a class="pill" href="contact.html">Request a quote</a></p>
+              <p style="margin-top:18px"><a class="pill" href="contact.html">Talk to us</a></p>
             </div>""".format(name=e(name), price=e(price), spec=e(spec), includes=includes))
 
     return """
@@ -797,7 +848,7 @@ def build_product():
               <input type="text" inputmode="numeric" value="1" data-qty-value aria-label="Quantity" />
               <button type="button" data-qty="1" aria-label="More">+</button>
             </div>
-            <button class="pill pdp__add" type="button" data-add-quote="" data-label="Add to quote">Add to quote</button>
+            <button class="pill pdp__add" type="button" data-add-cart="">Add to cart</button>
           </div>
           <p class="t-meta"><a class="link-more" href="terms.html">Delivery, support and returns</a></p>
 
@@ -855,10 +906,12 @@ def build_product():
       <div class="grid" data-related></div>
     </section>
 
-    <script src="js/products.js?v={ver}"></script>
     <script>
-      (function () {{
-        var PLAN = {plan_map};
+      /* products.js now loads at the end of the body so every page's cart
+         can read it, which puts it after this block in document order.
+         Wait for DOMContentLoaded, by which point it has run. */
+      document.addEventListener('DOMContentLoaded', function () {{
+        var PLAN = window.MR_PLAN_IMAGE || {{}};
         var CAT = {cat_map};
         var TILES = {tiles};
         var all = window.PRODUCTS || [];
@@ -909,13 +962,13 @@ def build_product():
         }}
         document.querySelector('[data-spec]').textContent = p.spec || '';
         document.querySelector('[data-acc-spec]').textContent = p.spec || 'Ask us for the full specification.';
-        document.querySelector('[data-add-quote]').setAttribute('data-add-quote', p.key);
+        document.querySelector('[data-add-cart]').setAttribute('data-add-cart', p.key);
         document.querySelector('[data-fav]').setAttribute('data-fav', p.key);
         document.querySelector('[data-detail]').src = img(Math.min(2, n));
         document.querySelector('[data-panel]').src = img(Math.min(3, n));
 
         /* Rental term reads as a variant selector, the way the reference
-           offers sizes. It is a quote hint, not a price change. */
+           offers sizes. It is carried into the cart line, not a price change. */
         if (p.terms) {{
           document.querySelector('[data-term-field]').hidden = false;
           var wrap = document.querySelector('[data-terms]');
@@ -967,7 +1020,7 @@ def build_product():
                  '</div></a>';
         }}).join('');
 
-        /* Quantity is carried into the quote note rather than priced here. */
+        /* Quantity is read by the cart when the item is added. */
         var qty = document.querySelector('[data-qty-value]');
         document.querySelectorAll('[data-qty]').forEach(function (b) {{
           b.addEventListener('click', function () {{
@@ -977,11 +1030,10 @@ def build_product():
         }});
 
         document.title = title(p.name) + ' — MAXRENTAL';
-      }})();
+      }});
     </script>
 """.format(ver=VER, includes=includes, addons=addons,
            support=e(C.COMPANY["support"]), hours=e(C.COMPANY["hours"]),
-           plan_map=str(PLAN_IMAGE).replace("'", '"'),
            cat_map=str(CATEGORY_LABEL).replace("'", '"'),
            tiles=str(tile_counts()).replace("'", '"'))
     return page(meta, body, "products.html")

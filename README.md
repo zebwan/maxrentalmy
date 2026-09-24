@@ -13,6 +13,7 @@ or browse the published version.
 |---|---|
 | `index.html` | Home — 3-slide hero, equipment tabs, journal, reviews |
 | `products.html` / `product.html` | Catalogue grid and single-equipment page (`?model=<key>`) |
+| cart | Slide-in drawer on every page, persisted in `localStorage` |
 | `short-term.html` / `long-term.html` | Rental plan tiers |
 | `services.html` `about.html` `news.html` `contact.html` | |
 | `terms.html` `privacy.html` | |
@@ -22,6 +23,24 @@ To regenerate the HTML after editing `content.py`:
 ```bash
 python3 build.py
 ```
+
+## Cart
+
+A slide-in drawer, available from every page, backed by `localStorage` under
+`MR2_CART` (items are `{k: product key, q: quantity, t: rental term}`).
+
+Half the catalogue is **rented monthly** (`unit: 'month'`) and half is **sold
+outright**, so the drawer keeps two separate totals and never adds them
+together. Adding a rental carries the selected term onto the cart line.
+
+**There is no payment gateway yet.** The Checkout button is a placeholder
+pointing at the contact form. When the gateway lands, that `href` in
+`cart_drawer()` is the single place to change, and the two totals the drawer
+already computes are what it should be handed.
+
+On phones the cart button moves out of the header row and into the menu panel.
+If you would rather have the usual cart icon in the header bar on mobile, drop
+the `.header__cart { display: none }` rule in the `max-width: 860px` block.
 
 ## Status
 
