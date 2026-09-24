@@ -38,9 +38,8 @@ pointing at the contact form. When the gateway lands, that `href` in
 `cart_drawer()` is the single place to change, and the two totals the drawer
 already computes are what it should be handed.
 
-On phones the cart button moves out of the header row and into the menu panel.
-If you would rather have the usual cart icon in the header bar on mobile, drop
-the `.header__cart { display: none }` rule in the `max-width: 860px` block.
+The cart button sits in the header at every width; on phones the drawer goes
+full width.
 
 ## Status
 

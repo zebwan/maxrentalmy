@@ -125,9 +125,6 @@ def header(current=""):
     <div class="container header__inner">
       <nav class="nav">
 {links}
-        <button class="nav__cart" type="button" data-open-cart>Cart
-          <span class="cart-badge" data-cart-count hidden>0</span>
-        </button>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false">Menu</button>
       <a class="brand" href="index.html" aria-label="MAXRENTAL home">

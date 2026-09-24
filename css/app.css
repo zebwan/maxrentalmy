@@ -823,7 +823,7 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
 
 /* ---------------------------------------------------------- cart drawer -- */
 
-.header__cart, .nav__cart {
+.header__cart {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -836,8 +836,7 @@ p { margin: 0; line-height: 1.25; letter-spacing: -0.5px; }
     cursor: pointer;
     transition: color 160ms ease;
 }
-.header__cart:hover, .nav__cart:hover { color: var(--accent-deep); }
-.nav__cart { display: none; }
+.header__cart:hover { color: var(--accent-deep); }
 
 .cart-badge {
     display: inline-flex;
@@ -964,15 +963,5 @@ body.has-drawer { overflow: hidden; }
 }
 
 @media (max-width: 860px) {
-    /* The header row is tight on a phone, so the cart button moves into the
-       menu panel rather than disappearing. */
-    .header__cart { display: none; }
-    .nav__cart {
-        display: inline-flex;
-        font-size: 22px;
-        letter-spacing: -0.04em;
-        color: var(--ink);
-        padding-block: 7px;
-    }
     .cart__panel { width: 100%; }
 }
