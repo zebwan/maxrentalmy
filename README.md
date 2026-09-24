@@ -45,7 +45,12 @@ When the gateway lands, replace the `.paystub` block in `build_checkout()` and
 hand it the two totals the summary already computes. Nothing else needs to move.
 
 Form validation is deliberately `novalidate` plus a manual pass, so every bad
-field is reported at once rather than the browser stopping at the first.
+field is reported at once rather than the browser stopping at the first. The
+contact form uses the same `.field` / `.fieldset` system and the same
+validation pass.
+
+Neither form has a backend. Both swap themselves for a confirmation so the
+mockup can be clicked through; point them at a real handler before launch.
 
 The cart button sits in the header at every width; on phones the drawer goes
 full width.

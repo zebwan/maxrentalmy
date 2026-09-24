@@ -54,29 +54,70 @@
             <p class="t-meta" style="margin-top:14px">Monday to Friday, 9am to 6pm, excluding public holidays</p>
           </div>
         </div>
-        <form class="reveal" data-reveal-delay="80" onsubmit="return false">
-          <label style="display:block;margin-bottom:18px"><span class="t-meta">Name</span><input type="text" style="display:block;width:100%;margin-top:6px;padding:11px 0;font:inherit;border:0;border-bottom:1px solid var(--rule);background:none"></input></label>
-          <label style="display:block;margin-bottom:18px"><span class="t-meta">Company</span><input type="text" style="display:block;width:100%;margin-top:6px;padding:11px 0;font:inherit;border:0;border-bottom:1px solid var(--rule);background:none"></input></label>
-          <label style="display:block;margin-bottom:18px"><span class="t-meta">Email</span><input type="email" style="display:block;width:100%;margin-top:6px;padding:11px 0;font:inherit;border:0;border-bottom:1px solid var(--rule);background:none"></input></label>
-          <label style="display:block;margin-bottom:18px">
-            <span class="t-meta">Topic</span>
-            <select style="display:block;width:100%;margin-top:6px;padding:11px 0;font:inherit;border:0;border-bottom:1px solid var(--rule);background:none">
-            <option>Rental enquiry</option>
-            <option>PC sales</option>
-            <option>IT support</option>
-            <option>Backup solutions</option>
-            <option>Billing</option>
-            <option>Something else</option>
-            </select>
-          </label>
-          <label style="display:block;margin-bottom:24px">
-            <span class="t-meta">How many desks, and what for?</span>
-            <textarea rows="4" style="display:block;width:100%;margin-top:6px;padding:11px 0;font:inherit;border:0;border-bottom:1px solid var(--rule);background:none"></textarea>
-          </label>
-          <button class="pill" type="submit">Send enquiry</button>
-        </form>
+
+        <div class="reveal" data-reveal-delay="80">
+          <form data-enquiry novalidate>
+            <label class="field"><span>Name</span>
+              <input type="text" name="name" autocomplete="name" required /></label>
+            <label class="field"><span>Company</span>
+              <input type="text" name="company" autocomplete="organization" required /></label>
+            <div class="field__row">
+              <label class="field"><span>Email</span>
+                <input type="email" name="email" autocomplete="email" required /></label>
+              <label class="field"><span>Phone <span class="grey">(optional)</span></span>
+                <input type="tel" name="phone" autocomplete="tel" /></label>
+            </div>
+            <label class="field"><span>Topic</span>
+              <select name="topic">
+              <option>Rental enquiry</option>
+              <option>PC sales</option>
+              <option>IT support</option>
+              <option>Backup solutions</option>
+              <option>Billing</option>
+              <option>Something else</option>
+              </select></label>
+            <label class="field" style="margin-bottom:24px"><span>How many desks, and what for?</span>
+              <textarea name="message" rows="4" required></textarea></label>
+            <button class="pill" type="submit">Send enquiry</button>
+            <p class="checkout__err" data-enquiry-err hidden></p>
+          </form>
+
+          <div data-enquiry-done hidden>
+            <h2>Thanks, that is with us</h2>
+            <p class="t-lead grey" style="margin-top:14px">
+              We reply within one working day. For anything urgent, WhatsApp 012-457 9211.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var form = document.querySelector('[data-enquiry]');
+        if (!form) return;
+        form.addEventListener('submit', function (ev) {
+          ev.preventDefault();
+          var err = document.querySelector('[data-enquiry-err]');
+          /* Same manual pass as checkout: report every bad field, not just the
+             first one the browser trips on. */
+          var bad = [].slice.call(form.elements).filter(function (el) {
+            return el.willValidate && !el.checkValidity();
+          });
+          if (bad.length) {
+            err.hidden = false;
+            err.textContent = bad.length === 1
+              ? 'One field still needs attention.'
+              : bad.length + ' fields still need attention.';
+            bad[0].focus();
+            return;
+          }
+          /* Mockup: no backend wired. Point this at their form handler. */
+          form.hidden = true;
+          document.querySelector('[data-enquiry-done]').hidden = false;
+        });
+      });
+    </script>
 
   </main>
   <footer class="footer">
